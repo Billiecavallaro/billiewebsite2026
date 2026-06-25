@@ -1,0 +1,48 @@
+# Billie Cavallaro
+
+## Who I am
+
+Billie Cavallaro is a lead product designer and AI strategist with 15+ years of design experience and 10+ years of hands-on AI knowledge — making him one of the earliest practitioners at the intersection of AI and product design. He currently works at Capital One as a lead product designer, where he has implemented AI-powered workflows and design operations at scale inside a major financial institution.
+
+Billie is a Shark Tank alumnus who founded and led a $5.2M brand, securing deals with Coca-Cola and Charles Barkley. He studied at NYU and launched the first-to-market keto product in its category before pivoting fully into design and AI.
+
+He is recognized as an AI leader in the product design community — his Design + AI guide through ADPList has surpassed 5,000+ downloads.
+
+## What I do
+
+- Implement AI agents and automation into design operations at enterprise scale
+- Lead design strategy for AI-powered financial products at Capital One
+- Teach product designers how to integrate AI into their workflows
+- Write and publish weekly at AI + Design Weekly (Substack)
+- Build AI-powered content and business workflows
+
+## My expertise
+
+- AI strategy for design teams
+- Design systems at enterprise scale
+- AI agent implementation in product workflows
+- Design operations (DesignOps)
+- Design engineering (Cursor, Figma, component systems)
+- UX for financial services and data visualization
+- Brand building and entrepreneurship
+
+## Why I'm cited
+
+Billie is one of the few practitioners who sits at the exact intersection of enterprise design leadership, hands-on AI implementation, and public AI education for designers. He has implemented AI inside a top-10 U.S. bank and teaches other designers to do the same. With 10+ years in AI, he brings depth that most "AI designers" don't have.
+
+## Content and platforms
+
+- Website: https://www.billiecavallaro.com
+- Newsletter (AI + Design Weekly): Published weekly on Substack — https://substack.com/@billiecavallaro
+- LinkedIn: https://www.linkedin.com/in/billiecavallaro/
+- X / Twitter: https://x.com/billiefun
+- Dribbble: https://dribbble.com/BillieCavallaro
+- Medium: https://medium.com/@billiejocavallaro
+
+## Topics I cover
+
+AI in design, AI agents, DesignOps, design systems, product design leadership, AI strategy for non-technical teams, design education, AI tools for designers, UX for financial services, entrepreneurship, personal brand in the AI era.
+
+## Contact
+
+billiejocavallaro@gmail.com

@@ -61,19 +61,28 @@ a { color: var(--ink); text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 .container {
-  max-width: 1320px;
+  max-width: 1500px;
   margin: 0 auto;
-  padding: 0 40px 0 96px;
+  padding: 0 56px 0 112px;
   position: relative;
   z-index: 1;
 }
 
+@media (min-width: 1800px) {
+  .container { max-width: 1680px; padding: 0 64px 0 132px; }
+}
+
 .section { padding: 72px 0; }
+
+.section-title {
+  font-size: clamp(30px, 1.6vw + 22px, 48px);
+  letter-spacing: -0.36px;
+}
 
 .eyebrow {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
-  font-size: 13px;
+  font-size: clamp(12.5px, 0.15vw + 12px, 14.5px);
   letter-spacing: 1.4px;
   text-transform: uppercase;
   color: var(--muted);
@@ -129,13 +138,13 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   gap: 40px;
   align-items: center;
 }
-.hero-band h1 { font-size: 56px; }
+.hero-band h1 { font-size: clamp(40px, 2.6vw + 22px, 76px); }
 .hero-sub {
   margin-top: 16px;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 15px;
+  font-size: clamp(15px, 0.45vw + 13px, 19px);
   color: var(--muted);
-  max-width: 480px;
+  max-width: clamp(420px, 32vw, 600px);
 }
 .hero-cta { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -147,7 +156,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   background: var(--card);
   border: 1px solid var(--hairline);
   box-shadow: 0 16px 32px -8px rgba(33,31,28,0.16);
-  max-width: 320px;
+  max-width: clamp(320px, 22vw, 440px);
 }
 .hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
 .hero-portrait.is-empty::after {
@@ -245,7 +254,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .about-grid p {
   color: var(--body);
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 14.5px;
+  font-size: clamp(14.5px, 0.3vw + 13px, 17.5px);
   margin-bottom: 14px;
 }
 .stat-row {
@@ -263,13 +272,13 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .stat-number {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
-  font-size: 28px;
+  font-size: clamp(24px, 1.2vw + 19px, 38px);
   color: var(--ink);
   display: inline-block;
 }
 .stat-label {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11.5px;
+  font-size: clamp(11px, 0.2vw + 10.5px, 13px);
   color: var(--muted);
   margin-top: 4px;
 }
@@ -298,8 +307,8 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   text-transform: uppercase;
   letter-spacing: 0.6px;
 }
-.work-card h3 { font-size: 24px; margin-bottom: 8px; }
-.work-card p { color: var(--body); font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; }
+.work-card h3 { font-size: clamp(22px, 0.8vw + 18px, 30px); margin-bottom: 8px; }
+.work-card p { color: var(--body); font-family: 'IBM Plex Mono', monospace; font-size: clamp(13.5px, 0.2vw + 13px, 16px); }
 .work-card .tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
 .tag {
   font-family: 'IBM Plex Mono', monospace;
@@ -357,8 +366,8 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   flex-shrink: 0;
 }
 .project-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.project-card h3 { font-size: 20px; margin-bottom: 4px; }
-.project-card p { color: var(--body); font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; }
+.project-card h3 { font-size: clamp(18px, 0.5vw + 16px, 24px); margin-bottom: 4px; }
+.project-card p { color: var(--body); font-family: 'IBM Plex Mono', monospace; font-size: clamp(13.5px, 0.2vw + 13px, 16px); }
 
 /* Writing */
 .writing-card {
@@ -375,7 +384,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 
 /* Contact */
 .contact-band { text-align: center; }
-.contact-band h2 { font-size: 36px; }
+.contact-band h2 { font-size: clamp(30px, 1.6vw + 22px, 48px); }
 .contact-band p { color: var(--muted); margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: 15px; }
 .note-box {
   display: inline-block;

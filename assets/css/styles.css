@@ -117,13 +117,14 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .brand-mark {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
-  font-size: clamp(17px, 0.2vw + 16px, 20px);
+  font-size: clamp(18px, 0.4vw + 16px, 24px);
   display: inline-block;
 }
-.nav-links { display: flex; gap: 22px; }
+.nav-links { display: flex; gap: 28px; }
 .nav-links a {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: clamp(13px, 0.15vw + 12.5px, 15px);
+  font-weight: 500;
+  font-size: clamp(14.5px, 0.35vw + 13px, 18px);
   padding: 6px 2px;
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s, opacity 0.15s;

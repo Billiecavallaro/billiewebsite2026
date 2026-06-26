@@ -61,9 +61,9 @@ a { color: var(--ink); text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 .container {
-  max-width: 1100px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 24px 0 88px;
+  padding: 0 40px 0 96px;
   position: relative;
   z-index: 1;
 }

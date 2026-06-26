@@ -82,7 +82,7 @@ img { max-width: 100%; display: block; }
 .eyebrow {
   font-family: 'Space Mono', monospace;
   font-weight: 700;
-  font-size: clamp(12.5px, 0.15vw + 12px, 14.5px);
+  font-size: clamp(13px, 0.5vw + 11px, 18px);
   letter-spacing: 1.4px;
   text-transform: uppercase;
   color: var(--muted);

@@ -428,6 +428,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .paper-football {
   width: 46px;
   height: 46px;
+  object-fit: contain;
   display: block;
   transform-origin: 50% 70%;
   transition: transform 0.15s ease;

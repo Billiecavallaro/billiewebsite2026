@@ -67,7 +67,8 @@
 <nav class="site-nav">
   <div class="container">
     <a href="#top" class="brand-mark">Billie Cavallaro</a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#work">Work</a>
       <a href="#projects">Projects</a>
@@ -238,6 +239,14 @@
   <section id="contact" class="section contact-band">
     <div class="container">
       <p class="eyebrow" data-reveal>Contact</p>
+      <button class="paper-football-wrap" id="footballBtn" aria-label="Flick the paper football" data-reveal>
+        <svg class="paper-football" id="football" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="30,4 56,52 4,52" fill="#f9fafc" stroke="#1d2333" stroke-width="2" stroke-linejoin="round"/>
+          <line x1="30" y1="4" x2="30" y2="52" stroke="#1d2333" stroke-width="1.5"/>
+          <line x1="30" y1="4" x2="12" y2="52" stroke="#1d2333" stroke-width="1.5"/>
+          <line x1="30" y1="4" x2="48" y2="52" stroke="#1d2333" stroke-width="1.5"/>
+        </svg>
+      </button>
       <h2 data-reveal>Send me a note.</h2>
       <p class="note-box" data-reveal>Send Me a Note &gt; <a href="mailto:billiejocavallaro@gmail.com">billiejocavallaro@gmail.com</a></p>
       <div class="social-row" data-reveal style="transition-delay:0.1s;">
@@ -259,6 +268,37 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', function () {
+      var isOpen = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Paper football: click to flick, classic 90s desk-toy easter egg
+  var footballBtn = document.getElementById('footballBtn');
+  var football = document.getElementById('football');
+  if (footballBtn && football) {
+    footballBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      football.classList.remove('is-flicking');
+      void football.offsetWidth; // restart animation
+      football.classList.add('is-flicking');
+    });
+    football.addEventListener('animationend', function () {
+      football.classList.remove('is-flicking');
+    });
+  }
 
   // Scroll-reveal: fade/slide elements in as they enter view.
   // Respects prefers-reduced-motion via CSS (transition disabled there).

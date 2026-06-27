@@ -125,11 +125,35 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
   font-size: clamp(14.5px, 0.35vw + 13px, 18px);
-  padding: 6px 2px;
+  padding: 12px 4px;
   border-bottom: 1px solid transparent;
   transition: border-color 0.15s, opacity 0.15s;
 }
 .nav-links a:hover { border-color: var(--ink); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nav-toggle span,
+.nav-toggle span::before,
+.nav-toggle span::after {
+  content: '';
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  position: relative;
+  transition: transform 0.2s;
+}
+.nav-toggle span::before { position: absolute; top: -7px; }
+.nav-toggle span::after { position: absolute; top: 7px; }
 
 /* Hero */
 .hero-band { position: relative; padding: 64px 0 48px; }
@@ -179,7 +203,8 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(14px, 0.2vw + 13px, 16.5px);
   font-weight: 500;
-  padding: 11px 20px;
+  padding: 14px 22px;
+  min-height: 44px;
   border-radius: 6px;
   display: inline-flex;
   align-items: center;
@@ -257,6 +282,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(15.5px, 0.4vw + 13.5px, 19px);
   margin-bottom: 14px;
+  max-width: 640px;
 }
 .stat-row {
   display: grid;
@@ -302,6 +328,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .work-card:hover { transform: translateY(-4px); box-shadow: 0 16px 28px -10px rgba(33,31,28,0.16); }
 .work-card .role {
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
   font-size: clamp(11.5px, 0.15vw + 11px, 13.5px);
   color: var(--muted);
   margin-bottom: 8px;
@@ -313,6 +340,7 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 .work-card .tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
 .tag {
   font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
   font-size: clamp(11.5px, 0.15vw + 11px, 13.5px);
   color: var(--muted);
   background: var(--paper);
@@ -386,6 +414,39 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 /* Contact */
 .contact-band { text-align: center; }
 .contact-band h2 { font-size: clamp(30px, 1.6vw + 22px, 48px); }
+
+/* Paper football — a little 90s-classroom flick toy */
+.paper-football-wrap {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 auto 18px;
+  display: block;
+  cursor: url('../images/cursor-pencil.png') 2 32, pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.paper-football {
+  width: 46px;
+  height: 46px;
+  display: block;
+  transform-origin: 50% 70%;
+  transition: transform 0.15s ease;
+}
+.paper-football-wrap:hover .paper-football { transform: rotate(-6deg) scale(1.06); }
+.paper-football-wrap:active .paper-football { transform: rotate(-6deg) scale(0.94); }
+.paper-football.is-flicking {
+  animation: football-flick 0.9s cubic-bezier(0.33, 1, 0.68, 1);
+}
+@keyframes football-flick {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); }
+  35%  { transform: translate(60px, -90px) rotate(360deg) scale(0.92); }
+  65%  { transform: translate(110px, -40px) rotate(560deg) scale(0.85); opacity: 1; }
+  85%  { transform: translate(40px, 10px) rotate(680deg) scale(0.95); opacity: 1; }
+  100% { transform: translate(0, 0) rotate(720deg) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-football.is-flicking { animation: none; }
+}
 .contact-band p { color: var(--muted); margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: clamp(15px, 0.3vw + 13.5px, 18px); }
 .note-box {
   display: inline-block;
@@ -410,7 +471,7 @@ footer {
   border-top: 1px dashed var(--hairline);
   padding: 32px 0;
   text-align: center;
-  color: var(--muted-soft);
+  color: var(--muted);
   font-family: 'IBM Plex Mono', monospace;
   font-size: clamp(12.5px, 0.15vw + 12px, 14.5px);
 }
@@ -446,7 +507,22 @@ footer {
   .hero-band { padding: 48px 0 32px; }
   .hero-band h1 { font-size: 30px; }
   .hero-sub { font-size: 13.5px; }
-  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px dashed var(--hairline);
+    padding: 8px 20px 16px 56px;
+    box-shadow: 0 12px 20px -12px rgba(33,31,28,0.18);
+  }
+  .nav-links.is-open { display: flex; }
+  .nav-links a { padding: 12px 0; }
   .project-card { flex-direction: column; align-items: flex-start; }
   .writing-card { padding: 28px; }
   .contact-band h2 { font-size: 26px; }

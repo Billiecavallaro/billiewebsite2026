@@ -417,17 +417,19 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
 
 /* Paper football — a little 90s-classroom flick toy */
 .paper-football-wrap {
-  background: none;
-  border: none;
-  padding: 0;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  padding: 14px 20px;
   margin: 0 auto 18px;
-  display: block;
+  display: inline-flex;
+  box-shadow: 0 6px 16px -8px rgba(33,31,28,0.10);
   cursor: url('../images/cursor-pencil.png') 2 32, pointer;
   -webkit-tap-highlight-color: transparent;
 }
 .paper-football {
-  width: 46px;
-  height: 46px;
+  width: 90px;
+  height: 90px;
   object-fit: contain;
   display: block;
   transform-origin: 50% 70%;

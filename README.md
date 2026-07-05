@@ -37,3 +37,5 @@ Static site, no build step. Built for GitHub Pages + SEO/crawlability.
 - Add a real Open Graph image at `assets/images/og-cover.png` (1200×630px).
 - Add a favicon (currently a blank data URI placeholder).
 - Optional: add real photography/headshot — the design intentionally works without one, but a portrait in the hero would help personal-brand recognition in search and social previews.
+
+<!-- redeploy trigger 2026-07-05 -->

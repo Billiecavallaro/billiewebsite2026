@@ -180,11 +180,101 @@
         <a class="btn-outline" href="#contact">Get in touch</a>
       </div>
     </div>
-    <div class="hero-portrait is-empty" data-reveal style="transition-delay:0.15s;">
-      <img src="assets/images/headshot.png" alt="Billie Cavallaro, product designer" loading="eager"
-           onerror="this.parentElement.classList.add('is-empty'); this.remove();"
-           onload="this.parentElement.classList.remove('is-empty');">
+    <!-- Hockney-style framed portrait; eyes follow the cursor -->
+    <style>
+/* ---------- Hockney-style framed portrait ---------- */
+.hk-frame{position:relative;max-width:clamp(340px,28vw,500px);padding:12px;border-radius:3px;
+  background:linear-gradient(135deg,#d9b98a,#c49a63 30%,#e3c79b 55%,#b98d55 80%,#d6b383);
+  box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 -1px 0 rgba(0,0,0,.2) inset,0 22px 40px -14px rgba(33,31,28,.35),0 4px 10px rgba(33,31,28,.12)}
+.hk-frame::before{content:"";position:absolute;inset:0;border-radius:3px;pointer-events:none;opacity:.35;mix-blend-mode:multiply;
+  background:repeating-linear-gradient(90deg,rgba(120,80,30,.0) 0 3px,rgba(120,80,30,.25) 3px 4px,rgba(120,80,30,0) 4px 9px)}
+.hk-canvasboard{position:relative;padding:10.5%;background:#f6eedf;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08),inset 0 2px 6px rgba(0,0,0,.18)}
+/* painted border: hand-painted bands (wobbly via SVG filter) */
+.hk-band{position:absolute;pointer-events:none;filter:url(#hkWobble)}
+.hk-band.b1{inset:2.6%;border:clamp(8px,1.6vw,14px) solid #f2a7a0}
+.hk-band.b2{inset:7.2%;border:clamp(3px,.5vw,5px) solid #3bb6c4}
+.hk-painting{position:relative;aspect-ratio:4/5;overflow:hidden;background:#cfe6ea;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.hk-painting img,.hk-painting canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hk-painting canvas{opacity:0;transition:opacity .3s}
+.hk-painting.ready canvas{opacity:1}
+.hk-painting.ready img{visibility:hidden}
+@media (max-width:640px){.hk-frame{max-width:300px;padding:9px}}
+    </style>
+    <div class="hk-frame" data-reveal style="transition-delay:0.15s;">
+      <div class="hk-canvasboard">
+        <span class="hk-band b1" aria-hidden="true"></span><span class="hk-band b2" aria-hidden="true"></span>
+        <div class="hk-painting" data-eyes='[{"x":352,"y":375.5,"r":13.5,"w":31,"h":12.5},{"x":508,"y":371,"r":13.5,"w":31,"h":12.5}]'>
+          <img src="assets/images/headshot-hockney-pink.jpg" alt="Billie Cavallaro, product designer" loading="eager">
+        </div>
+      </div>
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hkWobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
     </div>
+    <script>
+/* Eyes that follow the cursor (desktop) or wander gently (touch).
+   Config lives on .hk-painting: data-eyes = JSON list of eyes in the image's
+   natural pixel coords: {x,y} iris centre, r iris radius, w/h half-size of the eye opening. */
+(function(){
+  var box=document.querySelector('.hk-painting');if(!box)return;
+  var img=box.querySelector('img');var eyes;try{eyes=JSON.parse(box.dataset.eyes)}catch(e){return}
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function start(){
+    var W=img.naturalWidth,H=img.naturalHeight;if(!W)return;
+    var cv=document.createElement('canvas');cv.width=W;cv.height=H;cv.setAttribute('aria-hidden','true');
+    var g=cv.getContext('2d');
+    // source copy
+    var src=document.createElement('canvas');src.width=W;src.height=H;var sg=src.getContext('2d');sg.drawImage(img,0,0);
+    var px;try{px=sg.getImageData(0,0,W,H).data}catch(e){return} // tainted canvas -> leave the plain image
+    function at(x,y){x=Math.round(x);y=Math.round(y);var i=(y*W+x)*4;return[px[i],px[i+1],px[i+2]]}
+    // base: irises painted out with the white of the eye
+    var base=document.createElement('canvas');base.width=W;base.height=H;var bg=base.getContext('2d');bg.drawImage(img,0,0);
+    eyes.forEach(function(e){
+      var a=at(e.x-e.w*.72,e.y+e.h*.15),b=at(e.x+e.w*.72,e.y+e.h*.15);
+      var col='rgb('+((a[0]+b[0])>>1)+','+((a[1]+b[1])>>1)+','+((a[2]+b[2])>>1)+')';
+      bg.save();bg.beginPath();bg.ellipse(e.x,e.y,e.w,e.h,0,0,7);bg.clip();
+      bg.fillStyle=col;bg.beginPath();bg.arc(e.x,e.y,e.r+1.5,0,7);bg.fill();
+      // soft upper-lid shadow so the fill sits in the eye
+      var gr=bg.createLinearGradient(0,e.y-e.h,0,e.y);gr.addColorStop(0,'rgba(60,40,30,.35)');gr.addColorStop(1,'rgba(60,40,30,0)');
+      bg.fillStyle=gr;bg.fillRect(e.x-e.w,e.y-e.h,e.w*2,e.h);bg.restore();
+      // iris patch (round, feathered edge)
+      var s=Math.ceil(e.r*2+4),p=document.createElement('canvas');p.width=p.height=s;var pg=p.getContext('2d');
+      pg.drawImage(src,e.x-s/2,e.y-s/2,s,s,0,0,s,s);
+      pg.globalCompositeOperation='destination-in';
+      var m=pg.createRadialGradient(s/2,s/2,e.r-1.5,s/2,s/2,e.r+1);m.addColorStop(0,'#000');m.addColorStop(1,'rgba(0,0,0,0)');
+      pg.fillStyle=m;pg.fillRect(0,0,s,s);e.patch=p;e.s=s;
+    });
+    var cur={x:0,y:0},tgt={x:0,y:0};
+    function draw(){
+      g.drawImage(base,0,0);
+      eyes.forEach(function(e){g.save();g.beginPath();g.ellipse(e.x,e.y,e.w,e.h,0,0,7);g.clip();
+        g.drawImage(e.patch,e.x-e.s/2+cur.x*e.r*.55,e.y-e.s/2+cur.y*e.r*.3);g.restore()});
+    }
+    box.appendChild(cv);draw();box.classList.add('ready');
+    if(reduce)return;
+    function eyeCentre(){var r=cv.getBoundingClientRect(),k=r.width/W,
+      mx=0,my=0;eyes.forEach(function(e){mx+=e.x;my+=e.y});mx/=eyes.length;my/=eyes.length;
+      return{x:r.left+mx*k,y:r.top+my*k}}
+    function look(cx,cy){var c=eyeCentre(),dx=cx-c.x,dy=cy-c.y,d=Math.hypot(dx,dy)||1,f=Math.tanh(d/260);
+      tgt.x=dx/d*f;tgt.y=dy/d*f}
+    var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches,idle;
+    if(fine){window.addEventListener('pointermove',function(ev){look(ev.clientX,ev.clientY)},{passive:true});
+      document.addEventListener('mouseleave',function(){tgt.x=tgt.y=0})}
+    else{(function wander(){var r=Math.random();
+        if(r<.35){tgt.x=0;tgt.y=0}else{var a=Math.random()*6.28,m=.35+Math.random()*.55;tgt.x=Math.cos(a)*m;tgt.y=Math.sin(a)*m*.7}
+        idle=setTimeout(wander,1400+Math.random()*2200)})();
+      window.addEventListener('touchstart',function(ev){var t=ev.touches[0];if(t)look(t.clientX,t.clientY)},{passive:true})}
+    var running=false;
+    function tick(){var dx=tgt.x-cur.x,dy=tgt.y-cur.y;
+      if(Math.abs(dx)+Math.abs(dy)>.002){cur.x+=dx*(fine?.18:.22);cur.y+=dy*(fine?.18:.22);draw()}
+      requestAnimationFrame(tick)}
+    // only animate while visible
+    if('IntersectionObserver' in window){new IntersectionObserver(function(en){var v=en[0].isIntersecting;
+        if(v&&!running){running=true;requestAnimationFrame(tick)}else if(!v){running=false}}).observe(box);
+      var _t=tick;tick=function(){if(!running)return;_t()}}
+    else requestAnimationFrame(tick);
+  }
+  if(img.complete&&img.naturalWidth)start();else img.addEventListener('load',start);
+})();
+    </script>
   </div>
 </header>
 

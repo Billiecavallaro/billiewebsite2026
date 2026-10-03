@@ -529,3 +529,8 @@ footer {
   .contact-band h2 { font-size: 26px; }
   .section { padding: 40px 0; }
 }
+
+/* Keep the paper plane (and anything else that flies off-screen) from widening
+   the page on phones, which made mobile browsers zoom out and shift left. */
+html, body { overflow-x: clip; }
+@supports not (overflow-x: clip) { html, body { overflow-x: hidden; } }

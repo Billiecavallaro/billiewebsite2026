@@ -61,7 +61,7 @@
 <!-- ============================================================
   NOTEBOOK INTRO: a composition-notebook cover fills the screen,
   then swings open on its spine to reveal the site underneath.
-  Plays once per browser session. Click / tap / any key opens it sooner.
+  Plays on every page load (including refresh). Click / tap / any key opens it sooner.
 ============================================================ -->
 <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
 <style>
@@ -92,10 +92,9 @@
   #nbIntro .label i:nth-child(1){top:46%}#nbIntro .label i:nth-child(2){top:61%}#nbIntro .label i:nth-child(3){top:76%}
   #nbIntro .label b{position:absolute;left:0;right:0;top:8%;text-align:center;font:400 min(27vw,215px)/1 'Reenie Beanie',cursive;
     color:#0d0d0d;-webkit-text-stroke:min(.5vw,3.5px) #0d0d0d;transform:rotate(-4deg);letter-spacing:.02em}
-  html.intro-seen #nbIntro{display:none}
   @media (prefers-reduced-motion:reduce){#nbIntro{display:none!important}}
 </style>
-<script>try{if(sessionStorage.getItem('nbIntroSeen')==='1')document.documentElement.classList.add('intro-seen')}catch(e){}</script>
+<script>if('scrollRestoration' in history)history.scrollRestoration='manual';</script>
 
 <div id="nbIntro" aria-hidden="true">
   <div class="cast"></div>
@@ -112,8 +111,8 @@
 <script>
 (function(){
   var nb=document.getElementById('nbIntro');if(!nb)return;
-  var seen=false;try{seen=sessionStorage.getItem('nbIntroSeen')==='1'}catch(e){}
-  if(seen||window.matchMedia('(prefers-reduced-motion: reduce)').matches){nb.remove();return}
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){nb.remove();return}
+  window.scrollTo(0,0); // always land at the top, behind the cover
     // Marble pattern: random black blobs on a seamless tile (generated here to keep the page light)
   (function(){
     var s=11;function r(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
@@ -141,7 +140,6 @@
     if(opened)return;opened=true;clearTimeout(auto);
     document.removeEventListener('keydown',open);
     nb.classList.add('opening');
-    try{sessionStorage.setItem('nbIntroSeen','1')}catch(e){}
     setTimeout(function(){root.style.overflow=prev},900);
     setTimeout(function(){nb.remove()},1750);
   }

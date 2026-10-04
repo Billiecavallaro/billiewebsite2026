@@ -179,7 +179,7 @@
         <a class="btn-outline" href="#contact">Get in touch</a>
       </div>
     </div>
-    <!-- Hockney-style framed portrait; eyes follow the cursor -->
+    <!-- "Watching You": Hockney-style framed portrait; eyes follow the cursor and blink -->
     <style>
 /* ---------- Hockney-style framed portrait ---------- */
 .hk-frame{position:relative;max-width:clamp(340px,28vw,500px);padding:12px;border-radius:3px;
@@ -197,19 +197,34 @@
 .hk-painting canvas{opacity:0;transition:opacity .3s}
 .hk-painting.ready canvas{opacity:1}
 .hk-painting.ready img{visibility:hidden}
-@media (max-width:640px){.hk-frame{max-width:300px;padding:9px}}
+/* museum wall label */
+.hk-figure{margin:0;max-width:clamp(340px,28vw,500px)}
+.hk-figure .hk-frame{max-width:none}
+.hk-label{margin:22px 0 0 auto;width:max-content;max-width:230px;padding:11px 14px 12px;background:#fdfcf9;
+  border:1px solid rgba(0,0,0,.08);box-shadow:0 1px 2px rgba(0,0,0,.06),0 6px 14px -8px rgba(0,0,0,.18);
+  font:400 11px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;color:#2a2723;letter-spacing:.01em}
+.hk-label b{display:block;font-weight:600;font-size:12px;letter-spacing:.02em}
+.hk-label .m{display:block;margin-top:2px;color:#6d6860}
+@media (max-width:640px){.hk-figure{max-width:300px}.hk-frame{padding:9px}.hk-label{margin-top:16px}}
     </style>
-    <div class="hk-frame" data-reveal style="transition-delay:0.15s;">
-      <div class="hk-canvasboard">
-        <span class="hk-band b1" aria-hidden="true"></span><span class="hk-band b2" aria-hidden="true"></span>
-        <div class="hk-painting" data-eyes='[{"x":352,"y":375.5,"r":13.5,"w":31,"h":12.5},{"x":508,"y":371,"r":13.5,"w":31,"h":12.5}]'>
-          <img src="assets/images/headshot-hockney-pink.jpg" alt="Billie Cavallaro, product designer" loading="eager">
+    <figure class="hk-figure" data-reveal style="transition-delay:0.15s;">
+      <div class="hk-frame">
+        <div class="hk-canvasboard">
+          <span class="hk-band b1" aria-hidden="true"></span><span class="hk-band b2" aria-hidden="true"></span>
+          <div class="hk-painting" data-eyes='[{"x":352,"y":375.5,"r":13.5,"w":31,"h":12.5},{"x":508,"y":371,"r":13.5,"w":31,"h":12.5}]'>
+            <img src="assets/images/headshot-hockney-pink.jpg" alt="Billie Cavallaro, product designer" loading="eager">
+          </div>
         </div>
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hkWobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
       </div>
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="hkWobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
-    </div>
+      <figcaption class="hk-label">
+        <b>Billie Cavallaro</b>
+        <span class="m">Code on Canvas</span>
+      </figcaption>
+    </figure>
     <script>
-/* Eyes that follow the cursor (desktop) or wander gently (touch).
+/* "Watching You": eyes follow the cursor (desktop) or wander gently (touch),
+   with one slow blink on arrival and an occasional natural blink after.
    Config lives on .hk-painting: data-eyes = JSON list of eyes in the image's
    natural pixel coords: {x,y} iris centre, r iris radius, w/h half-size of the eye opening. */
 (function(){
@@ -220,32 +235,47 @@
     var W=img.naturalWidth,H=img.naturalHeight;if(!W)return;
     var cv=document.createElement('canvas');cv.width=W;cv.height=H;cv.setAttribute('aria-hidden','true');
     var g=cv.getContext('2d');
-    // source copy
     var src=document.createElement('canvas');src.width=W;src.height=H;var sg=src.getContext('2d');sg.drawImage(img,0,0);
     var px;try{px=sg.getImageData(0,0,W,H).data}catch(e){return} // tainted canvas -> leave the plain image
     function at(x,y){x=Math.round(x);y=Math.round(y);var i=(y*W+x)*4;return[px[i],px[i+1],px[i+2]]}
+    function avg(list){var s=[0,0,0];list.forEach(function(c){s[0]+=c[0];s[1]+=c[1];s[2]+=c[2]});
+      return 'rgb('+Math.round(s[0]/list.length)+','+Math.round(s[1]/list.length)+','+Math.round(s[2]/list.length)+')'}
     // base: irises painted out with the white of the eye
     var base=document.createElement('canvas');base.width=W;base.height=H;var bg=base.getContext('2d');bg.drawImage(img,0,0);
     eyes.forEach(function(e){
-      var a=at(e.x-e.w*.72,e.y+e.h*.15),b=at(e.x+e.w*.72,e.y+e.h*.15);
-      var col='rgb('+((a[0]+b[0])>>1)+','+((a[1]+b[1])>>1)+','+((a[2]+b[2])>>1)+')';
+      var col=avg([at(e.x-e.w*.72,e.y+e.h*.15),at(e.x+e.w*.72,e.y+e.h*.15)]);
+      // eyelid skin: real texture copied from just above and below the eye
+      e.x0=Math.round(e.x-e.w-4);e.pw=Math.round(2*e.w+8);e.ph=Math.round(2*e.h+6);
+      e.up=document.createElement('canvas');e.up.width=e.pw;e.up.height=e.ph;
+      e.up.getContext('2d').drawImage(src,e.x0,Math.round(e.y-e.h-e.ph),e.pw,e.ph,0,0,e.pw,e.ph);
+      e.dn=document.createElement('canvas');e.dn.width=e.pw;e.dn.height=e.ph;
+      e.dn.getContext('2d').drawImage(src,e.x0,Math.round(e.y+e.h),e.pw,e.ph,0,0,e.pw,e.ph);
       bg.save();bg.beginPath();bg.ellipse(e.x,e.y,e.w,e.h,0,0,7);bg.clip();
       bg.fillStyle=col;bg.beginPath();bg.arc(e.x,e.y,e.r+1.5,0,7);bg.fill();
-      // soft upper-lid shadow so the fill sits in the eye
       var gr=bg.createLinearGradient(0,e.y-e.h,0,e.y);gr.addColorStop(0,'rgba(60,40,30,.35)');gr.addColorStop(1,'rgba(60,40,30,0)');
       bg.fillStyle=gr;bg.fillRect(e.x-e.w,e.y-e.h,e.w*2,e.h);bg.restore();
-      // iris patch (round, feathered edge)
       var s=Math.ceil(e.r*2+4),p=document.createElement('canvas');p.width=p.height=s;var pg=p.getContext('2d');
       pg.drawImage(src,e.x-s/2,e.y-s/2,s,s,0,0,s,s);
       pg.globalCompositeOperation='destination-in';
       var m=pg.createRadialGradient(s/2,s/2,e.r-1.5,s/2,s/2,e.r+1);m.addColorStop(0,'#000');m.addColorStop(1,'rgba(0,0,0,0)');
       pg.fillStyle=m;pg.fillRect(0,0,s,s);e.patch=p;e.s=s;
     });
-    var cur={x:0,y:0},tgt={x:0,y:0};
+    var cur={x:0,y:0},tgt={x:0,y:0},lid=0;
     function draw(){
       g.drawImage(base,0,0);
       eyes.forEach(function(e){g.save();g.beginPath();g.ellipse(e.x,e.y,e.w,e.h,0,0,7);g.clip();
-        g.drawImage(e.patch,e.x-e.s/2+cur.x*e.r*.55,e.y-e.s/2+cur.y*e.r*.3);g.restore()});
+        g.drawImage(e.patch,e.x-e.s/2+cur.x*e.r*.55,e.y-e.s/2+cur.y*e.r*.3);
+        if(lid>0){ // upper eyelid slides down; closed eye ends as a soft lash line
+          var x0=e.x0,x1=e.x0+e.pw,top=e.y-e.h-3,edge=top+(e.y+e.h*.4-top)*lid,dip=e.h*.32*Math.min(1,lid*1.6);
+          g.save();g.beginPath();g.moveTo(x0,top-4);g.lineTo(x1,top-4);g.lineTo(x1,edge-dip);
+          g.quadraticCurveTo(e.x,edge+dip,x0,edge-dip);g.closePath();g.clip();
+          g.drawImage(e.up,x0,edge+dip-e.ph);g.restore();
+          if(lid>.5){g.save();g.globalAlpha=Math.min(1,(lid-.5)/.35);g.beginPath();g.moveTo(x0,edge-dip);
+            g.quadraticCurveTo(e.x,edge+dip,x1,edge-dip);g.lineTo(x1,e.y+e.h+4);g.lineTo(x0,e.y+e.h+4);g.closePath();g.clip();
+            g.drawImage(e.dn,x0,edge-dip);g.restore()}
+          g.beginPath();g.moveTo(x1-3,edge-dip);g.quadraticCurveTo(e.x,edge+dip,x0+3,edge-dip);
+          g.strokeStyle='rgba(52,34,28,'+(.75*Math.min(1,lid*2.5))+')';g.lineWidth=2;g.lineCap='round';g.stroke()}
+        g.restore()});
     }
     box.appendChild(cv);draw();box.classList.add('ready');
     if(reduce)return;
@@ -254,22 +284,30 @@
       return{x:r.left+mx*k,y:r.top+my*k}}
     function look(cx,cy){var c=eyeCentre(),dx=cx-c.x,dy=cy-c.y,d=Math.hypot(dx,dy)||1,f=Math.tanh(d/260);
       tgt.x=dx/d*f;tgt.y=dy/d*f}
-    var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches,idle;
+    var fine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
     if(fine){window.addEventListener('pointermove',function(ev){look(ev.clientX,ev.clientY)},{passive:true});
       document.addEventListener('mouseleave',function(){tgt.x=tgt.y=0})}
     else{(function wander(){var r=Math.random();
         if(r<.35){tgt.x=0;tgt.y=0}else{var a=Math.random()*6.28,m=.35+Math.random()*.55;tgt.x=Math.cos(a)*m;tgt.y=Math.sin(a)*m*.7}
-        idle=setTimeout(wander,1400+Math.random()*2200)})();
+        setTimeout(wander,1400+Math.random()*2200)})();
       window.addEventListener('touchstart',function(ev){var t=ev.touches[0];if(t)look(t.clientX,t.clientY)},{passive:true})}
+    // blinks: one slow blink once the visitor arrives, then an occasional natural one
+    var blinkAt=0,blinkSlow=false,firstDone=false,visible=false;
+    function blink(slow){blinkAt=performance.now();blinkSlow=slow}
+    function lidAt(now){if(!blinkAt)return 0;var t=now-blinkAt,c=blinkSlow?260:110,h=blinkSlow?160:40,o=blinkSlow?380:170;
+      if(t<c){var u=t/c;return u*u}if(t<c+h)return 1;if(t<c+h+o){u=(t-c-h)/o;return 1-u*(2-u)}blinkAt=0;return 0}
+    (function idleBlink(){setTimeout(function(){if(firstDone&&visible&&!blinkAt)blink(false);idleBlink()},7000+Math.random()*8000)})();
+    function maybeFirst(){if(firstDone||!visible||document.getElementById('nbIntro'))return;firstDone=true;setTimeout(function(){blink(true)},900)}
+    setInterval(maybeFirst,250);
     var running=false;
-    function tick(){var dx=tgt.x-cur.x,dy=tgt.y-cur.y;
-      if(Math.abs(dx)+Math.abs(dy)>.002){cur.x+=dx*(fine?.18:.22);cur.y+=dy*(fine?.18:.22);draw()}
+    function tick(now){if(!running)return;
+      var dx=tgt.x-cur.x,dy=tgt.y-cur.y,l=lidAt(now),moved=Math.abs(dx)+Math.abs(dy)>.002;
+      if(moved){cur.x+=dx*(fine?.18:.22);cur.y+=dy*(fine?.18:.22)}
+      if(moved||l!==lid){lid=l;draw()}
       requestAnimationFrame(tick)}
-    // only animate while visible
-    if('IntersectionObserver' in window){new IntersectionObserver(function(en){var v=en[0].isIntersecting;
-        if(v&&!running){running=true;requestAnimationFrame(tick)}else if(!v){running=false}}).observe(box);
-      var _t=tick;tick=function(){if(!running)return;_t()}}
-    else requestAnimationFrame(tick);
+    if('IntersectionObserver' in window){new IntersectionObserver(function(en){visible=en[0].isIntersecting;
+        if(visible&&!running){running=true;requestAnimationFrame(tick)}else if(!visible){running=false}},{threshold:.4}).observe(box)}
+    else{visible=running=true;requestAnimationFrame(tick)}
   }
   if(img.complete&&img.naturalWidth)start();else img.addEventListener('load',start);
 })();

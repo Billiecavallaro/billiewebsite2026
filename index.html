@@ -294,7 +294,7 @@
     // blinks: one slow blink once the visitor arrives, then an occasional natural one
     var blinkAt=0,blinkSlow=false,firstDone=false,visible=false;
     function blink(slow){blinkAt=performance.now();blinkSlow=slow}
-    function lidAt(now){if(!blinkAt)return 0;var t=now-blinkAt,c=blinkSlow?260:110,h=blinkSlow?160:40,o=blinkSlow?380:170;
+    function lidAt(now){if(!blinkAt)return 0;var t=now-blinkAt,c=blinkSlow?150:110,h=blinkSlow?80:40,o=blinkSlow?220:170;
       if(t<c){var u=t/c;return u*u}if(t<c+h)return 1;if(t<c+h+o){u=(t-c-h)/o;return 1-u*(2-u)}blinkAt=0;return 0}
     (function idleBlink(){setTimeout(function(){if(firstDone&&visible&&!blinkAt)blink(false);idleBlink()},7000+Math.random()*8000)})();
     function maybeFirst(){if(firstDone||!visible||document.getElementById('nbIntro'))return;firstDone=true;setTimeout(function(){blink(true)},900)}

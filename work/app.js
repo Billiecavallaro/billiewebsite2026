@@ -26,3 +26,8 @@ if(matchMedia('(prefers-reduced-motion:reduce)').matches){v.removeAttribute('aut
 vb.addEventListener('click',()=>{if(v.paused){v.play();vb.innerHTML=S;vb.ariaLabel='Pause video'}else{v.pause();vb.innerHTML=P;vb.ariaLabel='Play video'}});
 new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)v.pause();else if(vb.ariaLabel==='Pause video')v.play().catch(()=>{})}),{threshold:.2}).observe(v);
 }
+// copy email
+(function(){const b=document.getElementById('copyEmail');if(!b)return;const t=document.getElementById('emailText').textContent.trim(),lbl=b.querySelector('b');
+b.addEventListener('click',async()=>{let ok=false;try{await navigator.clipboard.writeText(t);ok=true}catch(e){try{const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();ok=document.execCommand('copy');ta.remove()}catch(e2){}}
+if(!ok){const r=document.createRange();r.selectNodeContents(document.getElementById('emailText'));const s=getSelection();s.removeAllRanges();s.addRange(r)}
+b.classList.add('done');lbl.textContent=ok?'Copied':'Selected';setTimeout(()=>{b.classList.remove('done');lbl.textContent='Copy'},2000)})})();

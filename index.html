@@ -56,23 +56,6 @@
   ]
 }
 </script>
-
-<style id="reel-css">
-.work-card .card-thumb{position:relative;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .5s}
-.work-card .card-thumb>img{transition:opacity .4s,transform .6s}
-.reel{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;background:#0b0b0c;pointer-events:none}
-.reel img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s ease,transform 3.2s cubic-bezier(.2,.7,.2,1)}
-.reel img.on{opacity:1;transform:scale(1)}
-.reel-bars{position:absolute;left:12px;right:12px;bottom:10px;display:flex;gap:6px;z-index:2}
-.reel-bars i{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-.reel-bars i::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
-.reel-bars i.done::after{transform:scaleX(1)}
-.reel-bars i.run::after{transform:scaleX(1);transition:transform var(--dur,1600ms) linear}
-.work-card.playing .card-thumb{transform:scale(1.03);box-shadow:0 24px 50px -18px rgba(29,35,51,.45);border-color:transparent}
-.work-card.playing .card-thumb>img{opacity:0;transform:scale(.92)}
-.work-card.playing .reel{opacity:1}
-@media (prefers-reduced-motion:reduce){.reel img{transform:none!important;transition:opacity .6s}.work-card.playing .card-thumb{transform:none}}
-</style>
 </head>
 <body>
 <!-- ============================================================
@@ -384,7 +367,6 @@
           <div class="card-thumb card-thumb-logo">
             <img src="assets/images/work-capital-one.png" alt="Capital One logo" loading="lazy"
                  onerror="this.parentElement.remove();">
-            <div class="reel" aria-hidden="true"><img src="assets/images/reel/c1-1.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/c1-2.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/c1-3.webp" alt="" loading="lazy" decoding="async"><div class="reel-bars"><i></i><i></i><i></i></div></div>
           </div>
           <div class="role">Lead Product Designer</div>
           <h3>Capital One</h3>
@@ -399,7 +381,6 @@
           <div class="card-thumb card-thumb-logo">
             <img src="assets/images/work-discover.png" alt="Discover logo" loading="lazy"
                  onerror="this.parentElement.remove();">
-            <div class="reel" aria-hidden="true"><img src="assets/images/reel/ds-1.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/ds-2.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/ds-3.webp" alt="" loading="lazy" decoding="async"><div class="reel-bars"><i></i><i></i><i></i></div></div>
           </div>
           <div class="role">Product Design</div>
           <h3>Discover</h3>
@@ -413,7 +394,6 @@
           <div class="card-thumb card-thumb-logo">
             <img src="assets/images/work-stealth.png" alt="Stealth Startup logo" loading="lazy"
                  onerror="this.parentElement.remove();">
-            <div class="reel" aria-hidden="true"><img src="assets/images/reel/st-1.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/st-2.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/st-3.webp" alt="" loading="lazy" decoding="async"><div class="reel-bars"><i></i><i></i><i></i></div></div>
           </div>
           <div class="role">Advisor / Design</div>
           <h3>Stealth Startup</h3>
@@ -427,7 +407,6 @@
           <div class="card-thumb card-thumb-logo">
             <img src="assets/images/work-space-shake.png" alt="Space Shake logo" loading="lazy"
                  onerror="this.parentElement.remove();">
-            <div class="reel" aria-hidden="true"><img src="assets/images/reel/ss-1.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/ss-2.webp" alt="" loading="lazy" decoding="async"><img src="assets/images/reel/ss-3.webp" alt="" loading="lazy" decoding="async"><div class="reel-bars"><i></i><i></i><i></i></div></div>
           </div>
           <div class="role">Founder</div>
           <h3>Space Shake</h3>
@@ -585,30 +564,5 @@
   }
 </script>
 
-
-<script id="reel-js">
-(function(){
-  var DUR=1600, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.work-card').forEach(function(card){
-    var reel=card.querySelector('.reel'); if(!reel) return;
-    var imgs=reel.querySelectorAll('img'), bars=reel.querySelectorAll('.reel-bars i'), t=null, i=0;
-    reel.style.setProperty('--dur',DUR+'ms');
-    function show(n){
-      imgs.forEach(function(im,k){im.classList.toggle('on',k===n)});
-      bars.forEach(function(b,k){b.classList.remove('run');b.classList.toggle('done',k<n)});
-      void reel.offsetWidth; if(bars[n]) bars[n].classList.add('run');
-    }
-    function start(){ if(t) return; imgs.forEach(function(im){im.loading='eager'}); card.classList.add('playing'); i=0; show(0);
-      t=setInterval(function(){ i=(i+1)%imgs.length; show(i); }, reduce?DUR*1.6:DUR); }
-    function stop(){ clearInterval(t); t=null; card.classList.remove('playing');
-      setTimeout(function(){ if(!t){ imgs.forEach(function(im){im.classList.remove('on')}); bars.forEach(function(b){b.classList.remove('run','done')}); } },450); }
-    card.addEventListener('mouseenter',start); card.addEventListener('mouseleave',stop);
-    card.addEventListener('focusin',start); card.addEventListener('focusout',stop);
-    if(!matchMedia('(hover: hover)').matches && 'IntersectionObserver' in window){
-      new IntersectionObserver(function(es){es.forEach(function(e){ e.isIntersecting?start():stop(); })},{threshold:.6}).observe(card);
-    }
-  });
-})();
-</script>
 </body>
 </html>

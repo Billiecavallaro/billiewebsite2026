@@ -418,7 +418,7 @@
           </div>
         </article>
       </div>
-      <p class="case-study-note"><span class="sticky-note">Curious about the details? Request access to full case studies, or explore highlights on <a href="https://www.linkedin.com/in/billiecavallaro/" target="_blank" rel="noopener">LinkedIn</a>.</span></p>
+      <p class="case-study-note"><span class="sticky-note">Curious about the details? <a href="#contact">Request access</a> to full case studies, or explore highlights on <a href="https://www.linkedin.com/in/billiecavallaro/" target="_blank" rel="noopener">LinkedIn</a>.</span></p>
     </div>
   </section>
 
@@ -475,7 +475,17 @@
         <img class="paper-football" id="football" src="assets/images/Paper-football.svg" alt="" aria-hidden="true">
       </button>
       <h2 data-reveal>Send me a note.</h2>
-      <p class="note-box" data-reveal>Send Me a Note &gt; <a href="mailto:billiejocavallaro@gmail.com">billiejocavallaro@gmail.com</a></p>
+      <div class="email-copy" data-reveal>
+        <div class="email-copy__head">
+          <span class="email-copy__label">email</span>
+          <button type="button" class="email-copy__btn" id="copyEmailBtn" data-email="billiejocavallaro@gmail.com" aria-label="Copy email address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"></path></svg>
+            <span class="email-copy__btn-text">Copy</span>
+          </button>
+        </div>
+        <a class="email-copy__address" href="mailto:billiejocavallaro@gmail.com">billiejocavallaro@gmail.com</a>
+        <span class="visually-hidden" id="copyStatus" role="status" aria-live="polite"></span>
+      </div>
       <div class="social-row" data-reveal style="transition-delay:0.1s;">
         <a class="btn-outline" href="https://www.linkedin.com/in/billiecavallaro/" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn-outline" href="https://x.com/BillieCavallaro" target="_blank" rel="noopener">X / Twitter</a>
@@ -561,6 +571,39 @@
     } else {
       plane.classList.add('is-flying');
     }
+  }
+
+  // Copy email button in the contact section
+  var copyBtn = document.getElementById('copyEmailBtn');
+  if (copyBtn) {
+    var copyText = copyBtn.querySelector('.email-copy__btn-text');
+    var copyStatus = document.getElementById('copyStatus');
+    var copyTimer;
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'absolute'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta);
+    }
+    copyBtn.addEventListener('click', function () {
+      var email = copyBtn.getAttribute('data-email');
+      var done = function () {
+        copyBtn.classList.add('is-copied');
+        copyText.textContent = 'Copied';
+        if (copyStatus) copyStatus.textContent = 'Email address copied to clipboard';
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(function () {
+          copyBtn.classList.remove('is-copied');
+          copyText.textContent = 'Copy';
+          if (copyStatus) copyStatus.textContent = '';
+        }, 1800);
+      };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(done, function () { fallbackCopy(email); done(); });
+      } else { fallbackCopy(email); done(); }
+    });
   }
 </script>
 

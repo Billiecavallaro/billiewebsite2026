@@ -449,15 +449,59 @@ nav.site-nav .container { display: flex; align-items: center; justify-content: s
   .paper-football.is-flicking { animation: none; }
 }
 .contact-band p { color: var(--muted); margin-top: 14px; font-family: 'IBM Plex Mono', monospace; font-size: clamp(15px, 0.3vw + 13.5px, 18px); }
-.note-box {
-  display: inline-block;
-  margin-top: 10px;
-  border: 1px dashed var(--hairline);
-  border-radius: 4px;
-  padding: 10px 18px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: clamp(13px, 0.2vw + 12.5px, 15.5px);
+/* Copy-email card (light theme) */
+.email-copy {
+  max-width: 420px;
+  margin: 18px auto 0;
   background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px -10px rgba(33,31,28,0.22);
+  text-align: left;
+  overflow: hidden;
+}
+.email-copy__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 8px 16px;
+  border-bottom: 1px dashed var(--hairline);
+  background: var(--paper);
+}
+.email-copy__label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+}
+.email-copy__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 5px 10px;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.email-copy__btn:hover { background: var(--card); border-color: var(--hairline); }
+.email-copy__btn:focus-visible { outline: 2px solid var(--hole-color); outline-offset: 2px; }
+.email-copy__btn.is-copied { color: #1f7a4d; }
+.email-copy__address {
+  display: block;
+  padding: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(14px, 0.3vw + 13px, 17px);
+  color: var(--ink);
+  word-break: break-all;
+}
+.email-copy__address:hover { text-decoration: underline; text-underline-offset: 3px; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
 .social-row {
   display: flex;

@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Antonio:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=f2d1703">
+<link rel="stylesheet" href="styles.css?v=3152831">
 <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 </head>
@@ -31,100 +31,215 @@
 </section>
 
 <!-- ============ CASE 1 ============ -->
-<section class="case" id="unify">
+<section class="case dv2" id="unify">
   <div class="case-hero wrap">
     <p class="eyebrow rv">Project 01 · Design systems</p>
     <h2 class="h-xl rv">One system.<br>Seven products.</h2>
     <p class="lede rv">Discover’s governance, risk and compliance tools had each been built on their own. I mapped the whole ecosystem, merged two design systems into one, and redesigned the products on top of it.</p>
     <div class="meta rv"><span>Lead Product Designer &amp; Design Systems Lead</span><span>1.5 years</span><span>36-person team · 2 designers</span></div>
   </div>
-  <div class="wide rv"><div class="hero-img frame" data-full="img/cs1-hero.webp"><img src="img/cs1-hero.webp" alt="Consolidated GRC design standards: tooltips, helper text, modals, banners and notification templates"></div></div>
 
-
-  <div class="wrap say "><p class="rv">Seven products. Two design systems. <span>One language.</span></p></div>
-
-  <div class="chapter wrap">
-    <div class="head">
-      <p class="num rv">01 — The problem</p>
-      <h3 class="h-l rv">Every product spoke<br>a different language.</h3>
-      <p class="lede rv">There was no common foundation, no shared design language and no reusable standards. Users had to relearn every tool, and teams kept rebuilding the same components.</p>
-    </div>
-    <div class="grid-75">
-      <div class="frame pad rv" data-full="img/cs1-before.webp"><img src="img/cs1-before.webp" alt="Inconsistent legacy GRC product screens" loading="lazy"></div>
-      <div class="stack">
-        <div class="quote rv">When I use one product and then another, I have to learn a whole new way to work.</div>
-        <div class="quote rv">I get lost digging through endless documents to figure out what to do — and usually end up asking for help.</div>
-        <div class="quote rv">I feel like we build the same things over and over again.</div>
+  <div class="wide rv">
+    <div class="d-stage">
+      <div class="d-lib">
+        <div class="dl-h"><b>GRC Design System</b><span>v2.0 · 86 components</span></div>
+        <div class="dl-grid">
+          <div class="dl-c"><small>Buttons</small><div class="dl-row"><span class="db pri">Submit</span><span class="db sec">Save draft</span><span class="db ghost">Cancel</span></div></div>
+          <div class="dl-c"><small>Input + helper text</small><div class="dl-f"><label>Control owner</label><div class="dl-in">R. Patel</div><p>Who is accountable for testing this control.</p></div></div>
+          <div class="dl-c"><small>Tooltip</small><div class="dl-tip"><span class="dl-i">i</span><div class="dl-tt">Shows when you hover or tab to an icon.</div></div></div>
+          <div class="dl-c"><small>Status</small><div class="dl-row"><span class="dt ok">Effective</span><span class="dt warn">Needs review</span><span class="dt bad">Failed</span></div></div>
+          <div class="dl-c w2"><small>Banner</small><div class="dl-ban"><i>!</i><div><b>3 attestations due this week</b><span>Complete them before Friday to stay on track.</span></div><em>View</em></div></div>
+          <div class="dl-c"><small>Toggle + checkbox</small><div class="dl-row"><span class="dsw on"></span><span class="dsw"></span><span class="dcb on">✓</span><span class="dcb"></span></div></div>
+          <div class="dl-c w2"><small>Notification</small><div class="dl-note"><b>Action required: Review CTL-4471</b><p>Please complete your review by Nov 30.</p><a>CTL-4471 →</a></div></div>
+          <div class="dl-c"><small>Stepper</small><div class="dl-step"><i class="d">✓</i><s></s><i class="a">2</i><s></s><i>3</i></div></div>
+        </div>
       </div>
     </div>
-    <p class="cap rv"><b>The starting point.</b> Seven products, each with its own patterns. Quotes are from user interviews.</p>
   </div>
 
+  <div class="wrap say"><p class="rv">Seven products. Two design systems. <span>One language.</span></p></div>
+
   <div class="chapter wrap">
-    <div class="head">
-      <p class="num rv">02 — See the whole system</p>
-      <h3 class="h-l rv">First, make the<br>invisible visible.</h3>
-      <p class="lede rv">I mapped end-to-end workflows across every product to show the overlaps and gaps. With the PMs, I also set a <b>baseline for the cost of fragmentation</b> using incident volume, help tickets and deploy tickets, so the impact could be measured.</p>
+    <div class="c1head">
+      <p class="num rv">01 — The problem</p>
+      <h3 class="h-l rv">Every product spoke<br>a different language.</h3>
+      <p class="lede rv">No shared foundation, no shared patterns. Users had to relearn every tool, and teams kept rebuilding the same components.</p>
     </div>
-    <div class="frame rv" data-full="img/cs1-map.webp"><img src="img/cs1-map.webp" alt="End-to-end system map of GRC product workflows" loading="lazy"></div>
-    <p class="cap rv"><b>System map.</b> Every screen and handoff across the ecosystem, connected.</p>
-    <div class="frame pad rv" style="margin-top:20px" data-full="img/cs1-research.webp"><img src="img/cs1-research.webp" alt="Research synthesis board with sticky notes and annotated screens" loading="lazy"></div>
-    <p class="cap rv"><b>Research synthesis.</b> Fields, states and pain points tagged across products confirmed where the silos were.</p>
+    <div class="d-seven rv" id="dSeven">
+      <div class="d7-grid"><div class="d7 v0"><div class="d7-h"><i></i><b>Risks</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v1"><div class="d7-h"><i></i><b>Controls</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v2"><div class="d7-h"><i></i><b>Reg. change</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v3"><div class="d7-h"><i></i><b>Issues</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v4"><div class="d7-h"><i></i><b>Events</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v5"><div class="d7-h"><i></i><b>Third-party risk</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div><div class="d7 v6"><div class="d7-h"><i></i><b>Policy</b></div><div class="d7-r"></div><div class="d7-r s"></div><div class="d7-r"></div><div class="d7-f"><span class="d7-in"></span><span class="d7-btn">Submit</span></div></div></div>
+      <button class="d7-btn-t" type="button" id="dSevenBtn">Unify them →</button>
+    </div>
+    <div class="quotes">
+      <div class="quote rv">When I use one product and then another, I have to learn a whole new way to work.</div>
+      <div class="quote rv">I get lost digging through endless documents to figure out what to do.</div>
+      <div class="quote rv">I feel like we build the same things over and over again.</div>
+    </div>
   </div>
 
   <div class="chapter wrap">
-    <div class="head">
+    <div class="c1head">
+      <p class="num rv">02 — See the whole system</p>
+      <h3 class="h-l rv">First, make the<br><span class="grad">invisible visible.</span></h3>
+      <p class="lede rv">I mapped every workflow across all seven products to expose the overlaps and gaps. With the PMs, I set a baseline for the cost of fragmentation using incidents, help tickets and deploy tickets.</p>
+    </div>
+    <div class="d-map rv">
+      <svg viewBox="0 0 1000 460" class="d-mapsvg" aria-hidden="true">
+        <g class="dm-lines" fill="none" stroke-width="2">
+          <path d="M500 230 C 380 120, 260 80, 140 80"/><path d="M500 230 C 380 230, 260 230, 120 230"/><path d="M500 230 C 380 340, 260 380, 140 380"/>
+          <path d="M500 230 C 620 120, 740 80, 860 80"/><path d="M500 230 C 620 230, 740 230, 880 230"/><path d="M500 230 C 620 340, 740 380, 860 380"/>
+          <path d="M500 230 L 500 70"/>
+          <path class="dash" d="M140 80 C 300 40, 700 40, 860 80"/><path class="dash" d="M140 380 C 300 430, 700 430, 860 380"/>
+        </g>
+      </svg>
+      <div class="dm-core"><b>Shared workflows</b><span>Assess · Test · Remediate</span></div>
+      <span class="dm-n" style="--x:14%;--y:17%">Risks</span>
+      <span class="dm-n" style="--x:12%;--y:50%">Controls</span>
+      <span class="dm-n" style="--x:14%;--y:83%">Issues</span>
+      <span class="dm-n" style="--x:86%;--y:17%">Events</span>
+      <span class="dm-n" style="--x:88%;--y:50%">Third-party risk</span>
+      <span class="dm-n" style="--x:86%;--y:83%">Policy</span>
+      <span class="dm-n" style="--x:50%;--y:13%">Reg. change</span>
+      <span class="dm-gap" style="--x:50%;--y:9%;--d:.2s">gap</span>
+    </div>
+  </div>
+
+  <div class="chapter wrap">
+    <div class="c1head">
       <p class="num rv">03 — The design system</p>
       <h3 class="h-l rv">Two systems in.<br><span class="grad">One system out.</span></h3>
-      <p class="lede rv">I audited all 86+ components in the Horizon and Radiant design systems and merged them into <b>one governed library</b>. Each component came with clear rules for Workspace and Core UI, delivered in formats teams could use straight away.</p>
+      <p class="lede rv">I audited all 86+ components across Horizon and Radiant and merged them into one governed library, with clear rules and ready-to-use templates.</p>
     </div>
-    <div class="grid2">
-      <div class="frame rv" data-full="img/cs1-components.webp"><img src="img/cs1-components.webp" alt="Unified components: helper text, modal, alert and notification specs" loading="lazy"></div>
-      <div class="frame pad rv" data-full="img/cs1-guide.webp" style="display:flex;align-items:center"><img src="img/cs1-guide.webp" alt="Shareable tooltip standards page" loading="lazy"></div>
+    <div class="d-merge2 rv">
+      <div class="dm2-col a"><small>Horizon</small><span class="db pri sq">Submit</span><span class="dl-in sm">Text field</span><span class="dt warn">Pending</span></div>
+      <div class="dm2-col b"><small>Radiant</small><span class="db pri pill">SUBMIT</span><span class="dl-in sm ul">Text field</span><span class="dt warn sq">PENDING</span></div>
+      <div class="dm2-arrow">→</div>
+      <div class="dm2-col out"><small>Unified</small><span class="db pri">Submit</span><span class="dl-in sm">Text field</span><span class="dt warn">Needs review</span></div>
     </div>
-    <p class="cap rv"><b>Unified components and a shareable standards guide.</b> Linked templates made adoption easy for PMs and engineers. I followed up with enablement sessions across GRC.</p>
-    <div class="frame rv" style="margin-top:20px;background:#22223e" data-full="img/cs1-roadmap.webp"><img src="img/cs1-roadmap.webp" alt="GRC Tech design system roadmap with prioritized components" loading="lazy"></div>
-    <p class="cap rv"><b>Roadmap.</b> Components prioritized by impact, starting with notifications.</p>
+    <div class="d-spec rv">
+      <div class="ds-l">
+        <small>Component guideline</small>
+        <h4>Tooltip</h4>
+        <p>A short hint that appears when someone hovers or tabs to an element without a visible label.</p>
+        <ul><li class="y">Under 50 characters, one or two lines</li><li class="y">Add new information, don’t repeat the label</li><li class="n">Don’t use for full instructions. Use helper text.</li></ul>
+      </div>
+      <div class="ds-r">
+        <div class="ds-demo"><span class="dl-i big">i</span><div class="dl-tt show">Owner is accountable for testing.</div></div>
+        <div class="ds-meta"><span>Padding 8px</span><span>Max width 320px</span><span>Delay 300ms</span></div>
+      </div>
+    </div>
   </div>
 
   <div class="chapter wrap">
-    <div class="head">
+    <div class="c1head">
       <p class="num rv">04 — Notifications</p>
-      <h3 class="h-l rv">Notifications meant<br>something again.</h3>
-      <p class="lede rv">Users had learned to ignore the noise. I led a notification initiative across GRC that <b>removed 221 unnecessary messages</b> and rebuilt the essential ones (36 across 7 products) on a single content pattern: clear subject, direct action, and a linked record.</p>
+      <h3 class="h-l rv">221 removed.<br><span class="grad">The rest mattered.</span></h3>
+      <p class="lede rv">People had learned to ignore the noise. I cut 221 unnecessary notifications and rebuilt the 36 that mattered on one clear pattern.</p>
     </div>
-    <div class="frame pad rv" data-full="img/cs1-notif.webp"><img src="img/cs1-notif.webp" alt="Notification content hierarchy pattern and guidelines" loading="lazy"></div>
+    <div class="d-notif rv">
+      <div class="dn-before">
+        <small>Before</small>
+        <div class="dn-stack">
+          <div class="dn-m">FYI: record updated <em>12</em></div><div class="dn-m">Automated alert #4471 <em>8</em></div><div class="dn-m">RE: RE: FW: task <em>21</em></div><div class="dn-m">System notice <em>34</em></div><div class="dn-m">Reminder (auto) <em>17</em></div><div class="dn-m">Workflow event <em>9</em></div>
+        </div>
+        <b class="dn-count">221<span>unread</span></b>
+      </div>
+      <div class="dn-after">
+        <small>After</small>
+        <div class="dn-mail">
+          <div class="dn-sub"><span class="dn-tag">Action required</span><b>Review control CTL-4471</b></div>
+          <p class="dn-to">To R. Patel,</p>
+          <p>Your quarterly review is due <b>Nov 30</b>. Please confirm the test results and submit.</p>
+          <div class="dn-rec"><span>Record</span><a>CTL-4471 →</a></div>
+          <p class="dn-sig">GRC Team</p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="chapter wrap">
-    <div class="head">
+    <div class="c1head">
       <p class="num rv">05 — Process Central</p>
       <h3 class="h-l rv">It wasn’t native. Now it<br>feels like it always was.</h3>
-      <p class="lede rv">Process Central lived outside ServiceNow, but users expected it to feel like part of the platform. I rebuilt it from the ground up using the new system, so moving between modules now feels like one product.</p>
+      <p class="lede rv">I rebuilt Process Central on the new system, so moving between modules feels like one product. Drag to compare.</p>
     </div>
-    <div class="tabs rv" role="tablist" data-group="pc">
-      <button role="tab" aria-selected="true" data-t="pc1">Dashboard</button>
-      <button role="tab" aria-selected="false" data-t="pc2">Attestation</button>
-      <button role="tab" aria-selected="false" data-t="pc3">Completion</button>
+    <div class="d-ba rv" id="dBA" style="--p:50%">
+      <div class="ba-pane ba-after">
+        <div class="pc">
+          <div class="pc-top"><b>Process Central</b><span>Search</span><i>BC</i></div>
+          <div class="pc-b">
+            <h5>Welcome back, Billie</h5>
+            <div class="pc-k"><div><small>My processes</small><b>7</b></div><div><small>Awaiting action</small><b>3</b></div><div><small>Completed</small><b>24</b></div></div>
+            <div class="pc-t"><div class="pc-th"><span>Process</span><span>Owner</span><span>Due</span><span>Status</span></div>
+              <div class="pc-tr"><span>Quarterly access review</span><span>R. Patel</span><span>Nov 30</span><span class="dt warn">In progress</span></div>
+              <div class="pc-tr"><span>Vendor risk attestation</span><span>J. Moore</span><span>Dec 4</span><span class="dt">Not started</span></div>
+              <div class="pc-tr"><span>Policy 4.2 refresh</span><span>A. Chen</span><span>Dec 12</span><span class="dt ok">Ready</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ba-pane ba-before">
+        <div class="pc old">
+          <div class="pc-top"><b>PROCESS CENTRAL v3.2</b><span>Home | Admin | Reports | Help | Logout</span></div>
+          <div class="pc-b">
+            <div class="old-tabs"><span>My Items (7)</span><span>Group Items</span><span>All</span><span>Archive</span></div>
+            <table><tr><th>ID</th><th>SHORT DESCRIPTION</th><th>ASSIGNED</th><th>STATE</th><th>UPDATED</th></tr>
+            <tr><td>PR-A77</td><td>Complete Know Your Process Operations Review for UBF_ID_002251</td><td>User Name</td><td>Open</td><td>2024-11-02</td></tr>
+            <tr><td>PR-A78</td><td>Complete Know Your Process Operations Review for UBF_ID_003873</td><td>User Name</td><td>Open</td><td>2024-11-02</td></tr>
+            <tr><td>PR-A81</td><td>Attestation Request Pending Approval (Auto-Gen)</td><td>User Name</td><td>Pending</td><td>2024-10-28</td></tr>
+            <tr><td>PR-A90</td><td>Review Required: Process Owner Validation Workflow</td><td>User Name</td><td>Open</td><td>2024-10-21</td></tr></table>
+          </div>
+        </div>
+      </div>
+      <span class="ba-lab l">Before</span><span class="ba-lab r">After</span>
+      <div class="ba-handle"><i>⟷</i></div>
+      <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Compare before and after">
     </div>
-    <div class="rv">
-      <div class="tabpanel on" id="pc1"><div class="frame bleed" data-full="img/cs1-pc-home.webp"><img src="img/cs1-pc-home.webp" alt="Process Central dashboard before and after" loading="lazy"></div></div>
-      <div class="tabpanel" id="pc2"><div class="frame bleed" data-full="img/cs1-pc-form.webp"><img src="img/cs1-pc-form.webp" alt="Attestation form before and after" loading="lazy"></div></div>
-      <div class="tabpanel" id="pc3"><div class="frame bleed" data-full="img/cs1-pc-done.webp"><img src="img/cs1-pc-done.webp" alt="Completion state before and after" loading="lazy"></div></div>
-    </div>
-    <p class="cap rv"><b>Before → after.</b> A dense legacy UI became a clear, task-first workspace with a guided stepper and a confirmed completion state.</p>
   </div>
-
 </section>
 <!-- ============ CASE 2 ============ -->
-<section class="case dark" id="grace" style="padding-bottom:40px">
+<section class="case dark dv2" id="grace" style="padding-bottom:40px">
   <div class="case-hero wrap">
     <p class="eyebrow rv">Project 02 · AI product</p>
     <h2 class="h-xl rv">GRaCe.</h2>
     <p class="lede rv">An AI assistant trained on internal GRC knowledge. It gives people precise, task-specific guidance so they can finish their work <b>before it turns into an incident.</b></p>
     <div class="meta rv"><span>Lead Product Designer</span><span>6 months</span><span>12-person team · sole designer</span></div>
   </div>
-  <div class="wide rv"><div class="hero-img frame" data-full="img/cs2-hero.webp"><img src="img/cs2-hero.webp" alt="GRaCe assistant screens: home, task builder, and chat"></div></div>
+  <div class="wide rv">
+    <div class="gp-stage hero">
+      <div class="gp-row"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-hi">Billie,<br><b>how can I help?</b></p>
+      <small class="gp-l">Suggested for you</small>
+      <div class="gp-sug"><i>✦</i><div><b>Finish an attestation</b><span>2 due this week</span></div></div>
+      <div class="gp-sug"><i>✦</i><div><b>Log an issue</b><span>Step-by-step guidance</span></div></div>
+      <div class="gp-sug"><i>✦</i><div><b>Find a policy</b><span>Search 400+ documents</span></div></div>
+      <div class="gp-cta"><span>Build a task</span><b>→</b></div>
+      <div class="gp-in"><span>Ask anything…</span><b>↑</b></div></div>
+    </div><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-t">Build a task</p>
+      <small class="gp-l">I want to</small>
+      <div class="gp-chips"><span class="on">Summarize</span><span>Draft</span><span>Review</span></div>
+      <small class="gp-l">Using</small>
+      <div class="gp-chips"><span>Policy</span><span class="on">Control</span><span>Issue</span><span>Event</span></div>
+      <small class="gp-l">As a</small>
+      <div class="gp-chips"><span class="on">Report</span><span>Email</span><span>Checklist</span></div>
+      <div class="gp-task"><small>Your task</small><p>Summarize <b>Control CTL-4471</b> as a <b>report</b></p><div class="gp-att">📎 Q3 test results.pdf</div></div>
+      <div class="gp-cta"><span>Run task</span><b>→</b></div></div>
+    </div><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <div class="gp-u">Summarize CTL-4471 as a report</div>
+      <div class="gp-a"><p>Here’s a summary of <b>CTL-4471 · Access reviews</b>:</p>
+        <ul><li>3 test exceptions in Q3</li><li>Owner: R. Patel</li><li>Next review due Nov 30</li></ul>
+        <div class="gp-doc"><i>▤</i><div><b>CTL-4471 summary</b><span>Report · 2 pages</span></div></div>
+      </div>
+      <div class="gp-in"><span>Reply…</span><b>↑</b></div></div>
+    </div></div>
+    </div>
+  </div>
 
 
   <div class="chapter wrap">
@@ -170,6 +285,11 @@
       <div class="rv"><b>Audit</b><p>Led a cross-team audit of every available input, then held weekly sessions to work through gaps and constraints.</p></div>
       <div class="rv"><b>Structure</b><p>Restructured scattered GRC knowledge into a clear hierarchy, giving the modelers a foundation they could train on with confidence.</p></div>
     </div>
+    <div class="d-tree rv" aria-hidden="true">
+      <div class="dt-mess"><span>policy_v3_FINAL.docx</span><span>controls (old).xlsx</span><span>FAQ draft</span><span>wiki page</span><span>email thread</span><span>process.pdf</span></div>
+      <div class="dt-arrow">→</div>
+      <div class="dt-tree"><b>GRC knowledge</b><ul><li>Policies<ul><li>Access</li><li>Vendor</li></ul></li><li>Controls<ul><li>Testing</li><li>Attestation</li></ul></li><li>Issues &amp; events<ul><li>Logging</li><li>Remediation</li></ul></li></ul></div>
+    </div>
   </div>
 
   <div class="chapter wrap">
@@ -178,10 +298,41 @@
       <h3 class="h-l rv">From a blank prompt<br>to a <span class="grad">built task.</span></h3>
       <p class="lede rv">A blank prompt makes users do the hard part. GRaCe turns a few simple choices into a ready-to-run task.</p>
     </div>
-    <div class="stage rv"><div class="phones">
-      <div class="phone" data-full="img/cs2-mvp1.webp"><div class="shot"><img src="img/cs2-mvp1.webp" alt="GRaCe home with wayfinder and Build a Task" loading="lazy"></div><h5>Wayfinder</h5><p>Smart starting points get people from first open to first task fast.</p></div>
-      <div class="phone" data-full="img/cs2-mvp2.webp"><div class="shot"><img src="img/cs2-mvp2.webp" alt="Build a Task with selections auto-assembled" loading="lazy"></div><h5>Build a Task</h5><p>Pick an action, a source and an output. The task assembles itself, and you can attach context before sending.</p></div>
-      <div class="phone" data-full="img/cs2-mvp3.webp"><div class="shot"><img src="img/cs2-mvp3.webp" alt="Clean chat view after a task runs" loading="lazy"></div><h5>Clean chat</h5><p>Once a task runs, it drops into a familiar, quiet conversation view. The primary action sits at the bottom so finishing the task comes first.</p></div>
+    <div class="gp-stage"><div class="gp-row gcap">
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-hi">Billie,<br><b>how can I help?</b></p>
+      <small class="gp-l">Suggested for you</small>
+      <div class="gp-sug"><i>✦</i><div><b>Finish an attestation</b><span>2 due this week</span></div></div>
+      <div class="gp-sug"><i>✦</i><div><b>Log an issue</b><span>Step-by-step guidance</span></div></div>
+      <div class="gp-sug"><i>✦</i><div><b>Find a policy</b><span>Search 400+ documents</span></div></div>
+      <div class="gp-cta"><span>Build a task</span><b>→</b></div>
+      <div class="gp-in"><span>Ask anything…</span><b>↑</b></div></div>
+    </div></div><h5>Wayfinder</h5><p>Smart starting points get people from first open to first task fast.</p></div>
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-t">Build a task</p>
+      <small class="gp-l">I want to</small>
+      <div class="gp-chips"><span class="on">Summarize</span><span>Draft</span><span>Review</span></div>
+      <small class="gp-l">Using</small>
+      <div class="gp-chips"><span>Policy</span><span class="on">Control</span><span>Issue</span><span>Event</span></div>
+      <small class="gp-l">As a</small>
+      <div class="gp-chips"><span class="on">Report</span><span>Email</span><span>Checklist</span></div>
+      <div class="gp-task"><small>Your task</small><p>Summarize <b>Control CTL-4471</b> as a <b>report</b></p><div class="gp-att">📎 Q3 test results.pdf</div></div>
+      <div class="gp-cta"><span>Run task</span><b>→</b></div></div>
+    </div></div><h5>Build a task</h5><p>Pick an action, a source and an output. The task assembles itself.</p></div>
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <div class="gp-u">Summarize CTL-4471 as a report</div>
+      <div class="gp-a"><p>Here’s a summary of <b>CTL-4471 · Access reviews</b>:</p>
+        <ul><li>3 test exceptions in Q3</li><li>Owner: R. Patel</li><li>Next review due Nov 30</li></ul>
+        <div class="gp-doc"><i>▤</i><div><b>CTL-4471 summary</b><span>Report · 2 pages</span></div></div>
+      </div>
+      <div class="gp-in"><span>Reply…</span><b>↑</b></div></div>
+    </div></div><h5>Clean chat</h5><p>Results land in a quiet, familiar conversation view.</p></div>
     </div></div>
   </div>
 
@@ -191,11 +342,47 @@
       <h3 class="h-l rv">Users asked for a nudge.<br>So V2 gave them one.</h3>
       <p class="lede rv">In UAT, people said they wanted reminders and progress check-ins. V2 added <b>smart reminders</b> and <b>achievements</b>, and removed the redundant “Ask anything” entry point.</p>
     </div>
-    <div class="stage rv"><div class="phones four">
-      <div class="phone" data-full="img/cs2-v2home.webp"><div class="shot"><img src="img/cs2-v2home.webp" alt="V2 home screen" loading="lazy"></div><h5>Simpler home</h5><p>Less noise, with reminders one tap away.</p></div>
-      <div class="phone" data-full="img/cs2-v2rem.webp"><div class="shot"><img src="img/cs2-v2rem.webp" alt="Smart reminder options in chat" loading="lazy"></div><h5>Smart reminders</h5><p>Set a nudge, a check-in or a custom reminder right from chat.</p></div>
-      <div class="phone" data-full="img/cs2-v2man.webp"><div class="shot"><img src="img/cs2-v2man.webp" alt="Manage reminders list" loading="lazy"></div><h5>Full control</h5><p>Edit or cancel any reminder, any time.</p></div>
-      <div class="phone" data-full="img/cs2-v2ach.webp"><div class="shot"><img src="img/cs2-v2ach.webp" alt="Achievements screen" loading="lazy"></div><h5>Achievements</h5><p>Visible wins that teams can celebrate across GRC.</p></div>
+    <div class="gp-stage"><div class="gp-row four gcap">
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-hi">Welcome back,<br><b>Billie</b></p>
+      <div class="gp-rem"><i>⏰</i><div><b>Reminder</b><span>Attestation due tomorrow</span></div><em>Open</em></div>
+      <small class="gp-l">Suggested for you</small>
+      <div class="gp-sug"><i>✦</i><div><b>Finish an attestation</b><span>2 due this week</span></div></div>
+      <div class="gp-sug"><i>✦</i><div><b>Log an issue</b><span>Step-by-step guidance</span></div></div>
+      <div class="gp-cta"><span>Build a task</span><b>→</b></div></div>
+    </div></div><h5>Simpler home</h5><p>Reminders up front, less noise.</p></div>
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>GRaCe</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <div class="gp-u">Remind me to finish this attestation</div>
+      <div class="gp-a"><p>Sure. When should I nudge you?</p>
+        <div class="gp-opts"><span>In 1 hour</span><span class="on">Tomorrow 9 AM</span><span>Every Monday</span><span>Custom…</span></div>
+        <div class="gp-ok">✓ Reminder set for tomorrow, 9 AM</div>
+      </div></div>
+    </div></div><h5>Smart reminders</h5><p>Set a nudge right from chat.</p></div>
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>Reminders</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-t">Your reminders</p>
+      <div class="gp-r"><div><b>Finish attestation</b><span>Tomorrow · 9:00 AM</span></div><em>Edit</em></div>
+      <div class="gp-r"><div><b>Review CTL-4502</b><span>Fri · 2:00 PM</span></div><em>Edit</em></div>
+      <div class="gp-r"><div><b>Weekly issue check-in</b><span>Every Monday</span></div><em>Edit</em></div>
+      <div class="gp-r off"><div><b>Policy 4.2 refresh</b><span>Done</span></div><em>✓</em></div></div>
+    </div></div><h5>Full control</h5><p>Edit or cancel any time.</p></div>
+      <div><div class="rv"><div class="gp ">
+      <div class="gp-h"><span class="gp-av">G</span><b>Achievements</b><span class="gp-x">⋯</span></div>
+      <div class="gp-b">
+      <p class="gp-t">Achievements</p>
+      <div class="gp-badges">
+        <div><i style="--c:#ff6000">★</i><b>On time</b><span>5 in a row</span></div>
+        <div><i style="--c:#12a150">✓</i><b>Zero incidents</b><span>30 days</span></div>
+        <div><i style="--c:#0e8fb0">⚡</i><b>Fast finisher</b><span>Top 10%</span></div>
+        <div class="lock"><i>🔒</i><b>Team player</b><span>3 to go</span></div>
+      </div>
+      <div class="gp-prog"><small>Next badge</small><i style="--w:70%"></i></div></div>
+    </div></div><h5>Achievements</h5><p>Visible wins teams can celebrate.</p></div>
     </div></div>
   </div>
 
@@ -215,12 +402,32 @@
   <div class="index" style="margin-top:0">
     <a class="card t3 rv" href="stealth.html">
       <div class="txt"><span class="no">03</span><div class="k">Stealth startup · Platform</div><h3>Every team.<br>One workspace.</h3><p>Lead Product Designer · 2 years</p><span class="cta">View case study <i aria-hidden="true">→</i></span></div>
-      <div class="pic"><img src="img/cs3-analytics.webp" alt="Company analytics dashboard" loading="eager"></div>
+      <div class="pic gscene" aria-hidden="true">
+        <div class="gsc-board">
+          <div class="gsc-top"><span class="g-mark"></span><b>Workspace</b><span class="gsc-nav"><i class="on">Board</i><i>Teams</i><i>Analytics</i></span></div>
+          <div class="gsc-cols">
+            <div class="g-col"><div class="g-ch"><b>To do</b><em>3</em></div>
+              <div class="g-card"><span class="pr hi">High</span><b>Storefront signage</b><div class="g-cf"><span class="avs"><i style="--c:#12a150">SJ</i><i style="--c:#3b82f6">MC</i></span><em>Dec 15</em></div></div>
+              <div class="g-card"><span class="pr md">Medium</span><b>Interior graphics</b><div class="g-cf"><span class="avs"><i style="--c:#f59e0b">AR</i></span><em>Jan 20</em></div></div></div>
+            <div class="g-col"><div class="g-ch"><b>In progress</b><em>2</em></div>
+              <div class="g-card gsc-move"><span class="pr hi">High</span><b>Terminal wayfinding</b><div class="g-cf"><span class="avs"><i style="--c:#3b82f6">MC</i><i style="--c:#ef4444">AR</i></span><em>Dec 10</em></div></div>
+              <div class="g-card"><span class="pr lo">Low</span><b>Menu boards</b><div class="g-cf"><span class="avs"><i style="--c:#12a150">SJ</i></span><em>Dec 5</em></div></div></div>
+            <div class="g-col"><div class="g-ch"><b>Done</b><em>4</em></div>
+              <div class="g-card done"><b>Café renovation</b><div class="g-cf"><span class="avs"><i style="--c:#ef4444">AR</i></span><em class="ok">✓ Done</em></div></div></div>
+          </div>
+        </div>
+        <div class="gsc-chat">
+          <div class="gc-h"><span class="gc-av">✦</span><div><b>Assistant</b><small>Online</small></div></div>
+          <div class="gsc-b"><div class="gc-u">Which projects are at risk?</div>
+          <p><b>2 projects</b> need attention this week.</p>
+          <div class="gc-next"><span class="go">Rebalance crew</span><span>Notify</span></div></div>
+        </div>
+      </div>
     </a>
   </div>
 </section>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><button aria-label="Close">×</button><img alt=""></div>
-<script src="app.js?v=f2d1703"></script>
+<script src="app.js?v=3152831"></script>
 </body>
 </html>

@@ -49,4 +49,4 @@ billiejocavallaro@gmail.com
 
 ## billie.mcp
 
-Billie built billie.mcp, a Model Context Protocol (MCP) server that lets AI agents read his profile, check his fit for a role from a job description, list and request his case studies, book an intro, and find his digital products for designers. Source: https://github.com/Billiecavallaro/ai-design
+Billie built billie.mcp, a Model Context Protocol (MCP) server that lets AI agents read his profile, check his fit for a role from a job description, list and request his case studies, book an intro, and find his digital products for designers. Homepage: https://billiecavallaro.github.io/AI-Design/ · Install: npx -y github:Billiecavallaro/AI-Design · Source: https://github.com/Billiecavallaro/AI-Design
